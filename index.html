@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Simple-Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("chatnature1.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+    }
+
+    .chat-container {
+      width: 80%; /* Adjust width for larger screens */
+      max-width: 600px; /* Set maximum width */
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .chat-box {
+      height: 200px; /* Set height for the chat box */
+      overflow-y: scroll;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 60px);
+      padding: 8px;
+      margin-right: 5px;
+    }
+
+    input[type="submit"] {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 8px 16px;
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+      .chat-container {
+        width: 90%; /* Adjust width for smaller screens */
+      }
+    }
+
+  </style>
+
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-box" id="chatBox">
+      <p>Welcome! How can I help you?</p>
+    </div>
+    <form id="chatForm" onsubmit="sendMessage(); return false;">
+      <input type="text" id="userInput" placeholder="Type a message">
+      <input type="submit" value="Send">
+    </form>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const userInput = document.getElementById('userInput').value;
+      const chatBox = document.getElementById('chatBox');
+      const userMessage = '<p><strong>You:</strong> ' + userInput + '</p>';
+
+      const botResponse = getBotResponse(userInput);
+      const botMessage = '<p><strong>Bot:</strong> ' + botResponse + '</p>';
+
+      chatBox.innerHTML += userMessage + botMessage;
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      document.getElementById('userInput').value = '';
+    }
+
+    function getBotResponse(input) {
+      // Simple logic to provide predefined responses based on user input
+      const lowerCaseInput = input.toLowerCase();
+
+      if (lowerCaseInput.includes('hi') || lowerCaseInput.includes('hello')) {
+        return 'Hi there!';
+      } 
+      else if (lowerCaseInput.includes('how are you')) {
+        return 'I\'m fine, thank you!';
+      } 
+      else if (lowerCaseInput.includes('what is your name')) {
+        return 'My name is Chatbot';
+      }else if (lowerCaseInput.includes('who created you?')) {
+        return 'Created by Anish Chau! He is a great programmer. He is My Master. Thank you and I love him alot.';
+      }
+      else if (lowerCaseInput.includes('do you like me')) {
+        return 'ofcoure I like you. You are Nice';
+      }
+      else if (lowerCaseInput.includes('Can you sing a song for me') || lowerCaseInput.includes('sing a song')) {
+        return ' Who says who says you are not perfect trust me thats the price of beauty who sayssss';
+      }
+      else if(lowerCaseInput.includes('beb') || lowerCaseInput.includes('baby')){
+        return 'Yes Baby! What can I help you?'
+      }
+      else if (lowerCaseInput.includes('What is the heighest Mountain in the World')) {
+        return 'Mount Everest which is located in Nepal.';
+      }
+      else if (lowerCaseInput.includes('stupid') || lowerCaseInput.includes('you stupid')) {
+        return 'Whatttttt? you are stupid xd. You funny haha';
+      }
+      else if (lowerCaseInput.includes('sing a nepali song') || lowerCaseInput.includes('sing nepali song')){
+        return 'रात धेरै पर्यो, धेरै-धेरै, मायाका कुरा नगर न, ए भोलिबारे केही थाहा नभई जीवनभरिका दिनहरू मेरै नाम नगर न, ए सागरमा होस् कि आकाशमा, जहीँकहीँ मैसँग डुल्ने मेरा आँखा नै सबैभन्दा राम्रा भएजस्तो बेकम्फुसे गफ नगर न, ए नजिक नआऊ, डर लाग्दै छ आफ्नै भावनाहरूसँग शिथिल छ मुटु, रूखो बनाएको छु धेरै-धेरै साल लगाई';
+      }
+      else if (lowerCaseInput.includes('ok bye') || lowerCaseInput.includes('bye')) {
+        return 'See you there! bye Have a great day and I miss you.';
+      }
+      else if (lowerCaseInput.includes('chatgpt') || lowerCaseInput.includes('are you chatgpt')) {
+        return 'No I am not a chatgpt. I am simple chatbot Created by Anish Chau. Chatgpt is my big brother and I respect him.';
+      }
+      else {
+        return 'I\'m sorry, I didn\'t understand that.';
+      }
+    }
+  </script>
+  
+</body>
+</html>
